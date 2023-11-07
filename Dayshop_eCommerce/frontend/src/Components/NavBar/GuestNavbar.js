@@ -11,6 +11,7 @@ function GuestNavbar({setIsLoggedIn,setUserRole,setUserEmail}) {
 
   const [PageResp,setPageResp] = useState([])
 
+
   let Page;
     if(PageResp === 'cart'){
       Page = <Cart/>
@@ -43,7 +44,9 @@ function GuestNavbar({setIsLoggedIn,setUserRole,setUserEmail}) {
         </div>
         <div className='col-8' style={{width:1670,marginLeft:0,backgroundColor:'papayawhip',borderRadius:20,marginTop:0,padding:40}}>
                 <h1>Welcome to DayShop</h1><hr/>
+                <center>
                 {Page}
+                </center>
         </div>
         </div>
         

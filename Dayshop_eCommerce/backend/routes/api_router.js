@@ -39,7 +39,7 @@ router.post('/login', async (req,res)=>{
 });
 
 // Define a route to get all products
-router.get('/products', productController.getAllProducts);
+router.get('/allproducts', productController.getAllProducts);
 
 
 module.exports = router;
