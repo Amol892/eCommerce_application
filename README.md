@@ -37,11 +37,11 @@ console.log('Generated Secret Key:', secretKey);
 8) add into package.json file : "proxy":"http://localhost:8000"
 
 # Application images:
--> Login page
-![Login](https://github.com/Amol892/eCommerce_application/assets/114909137/c38b56be-e807-4be6-8750-649c9a3fd15d)
-
 -> Signup page
 ![Signup](https://github.com/Amol892/eCommerce_application/assets/114909137/b2724b30-b3ab-411e-a254-c59365012e11)
+
+-> Login page
+![Login](https://github.com/Amol892/eCommerce_application/assets/114909137/c38b56be-e807-4be6-8750-649c9a3fd15d)
 
 -> Home page : Product list with Add to cart button
 ![product_list](https://github.com/Amol892/eCommerce_application/assets/114909137/edf184a6-d794-411a-a823-bb26fbc73f4b)
