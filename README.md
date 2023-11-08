@@ -27,3 +27,11 @@ const secretKey = crypto.randomBytes(32).toString('hex');
 console.log('Generated Secret Key:', secretKey);
 
 # Reactjs server setup:
+1) npx create-react-app app_name
+2) cd app_name
+3) npm install bootstrap
+4) npm install react-router-dom
+5) npm install react-hook-form
+6) npm install axios
+7) npm start
+8) add into package.json file : "proxy":"http://localhost:8000"
