@@ -8,22 +8,20 @@
 >npm init -y (it creates package.json file which stores information about project and dependencies)
 
 # Install Dependencies:
-> npm install express (Express.js for building the server)
-> npm install fs (fs (file system) to read the JSON file.)
-> npm install mongoose (mongoose for MongoDB database connections)
-> npm install body-parser (body-parser for parsing request bodies)
-
-> npm install cors 
-> npm install -g nodemon  (for npm start commond) (add "start": "nodemon index.js" in package.json file)
+1) npm install express (Express.js for building the server)
+2) npm install fs (fs (file system) to read the JSON file.)
+3) npm install mongoose (mongoose for MongoDB database connections)
+4) npm install body-parser (body-parser for parsing request bodies)
+5) npm install cors
+6) npm install -g nodemon  (for npm start commond) (add "start": "nodemon index.js" in package.json file)
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   }
-
-> npm install bcrypt
-> npm install jsonwebtoken (jsonwebtoken for authentication)
-> npm install dotenv
-> npm install crypto (for secret key genereation)
+7) npm install bcrypt
+8) npm install jsonwebtoken (jsonwebtoken for authentication)
+9) npm install dotenv
+10) npm install crypto (for secret key genereation)
 const crypto = require('crypto');
 const secretKey = crypto.randomBytes(32).toString('hex');
 console.log('Generated Secret Key:', secretKey);
