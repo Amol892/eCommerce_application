@@ -59,14 +59,13 @@ function Signup() {
                     {error.password && <h4 style={{color:'red'}}>{error.password}</h4>}<br/>
                     
                     <label htmlFor='ro'>User Role</label>&nbsp;&nbsp;
-                    <select className='btn btn-outline-dark' {...register('role',{required : 'User Role is required'})}>
-                        <option disabled selected>Select Role</option>
+                    <select className='btn btn-dark col-6' {...register('role',{required : 'User Role is required'})}>
+                        <option disabled selected>Select User Role</option>
                         <option value='cs'>customer</option>
                         <option value='vd'>vendor</option>
-                        <option value='ad'>admin</option>
-                        
+   
                     </select>
-                    <p style={{'color':'red'}}>{error.role && error.role.message}</p>
+                    <p style={{'color':'red'}}>{error.role && error.role.message}</p><br/>
                     <center>
                     <input type='submit' value='Register' style={{padding:10,fontSize:20}} className='btn btn-success col-6'/><br/><br/>
                     </center>

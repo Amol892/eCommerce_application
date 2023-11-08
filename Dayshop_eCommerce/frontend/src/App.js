@@ -14,17 +14,17 @@ import { useState } from 'react';
 function App() {
 
   const [userRole,setUserRole] = useState(sessionStorage.getItem('role'))
-  const [userEmail,setUserEmail] = useState(sessionStorage.getItem('email'))
+  const [userData,setUserData] = useState([])
   const [isLoggedIn,setIsLoggedIn] = useState(false)
   let navbarComponent;
 
   if (isLoggedIn) {
     if (userRole === 'cs') {
-      navbarComponent = <CustNavbar setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole} setUserEmail={setUserEmail}/>;
+      navbarComponent = <CustNavbar setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole} setUserData={setUserData} userData={userData}/>;
     }
       
   }else{
-    navbarComponent = <GuestNavbar setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole} setUserEmail={setUserEmail}/>;
+    navbarComponent = <GuestNavbar setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole} setUserData={setUserData} userData={userData}/>;
   }
 
   return (
@@ -32,7 +32,7 @@ function App() {
       <BrowserRouter>
         {navbarComponent}
         <Routes>
-          
+            
         </Routes>
 
       </BrowserRouter>

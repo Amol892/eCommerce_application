@@ -25,4 +25,12 @@ exports.registerUser = async (req,res) => {
     }
 };
 
-
+exports.getUser = async (req,res) => {
+    try{
+        console.log(req.body)
+        const user = await User.findOne({email:req.body.email})
+        return res.status(200).json({user:user,message:'user data fetch successfully'})
+    } catch(error){
+        return res.sta(400).json({message:'Bad request'})
+    }
+}

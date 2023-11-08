@@ -6,21 +6,25 @@ import Signup from '../Account/Signup'
 import Login from '../Account/Login'
 import Home from '../Home'
 import Cart from '../Product/Cart'
+import SearchList from '../Product/SearchList'
 
-function GuestNavbar({setIsLoggedIn,setUserRole,setUserEmail}) {
+function GuestNavbar({setIsLoggedIn,setUserRole,setUserData,userData}) {
 
   const [PageResp,setPageResp] = useState([])
-
-
+  const [name,setName] = useState('')
+  const user = userData
   let Page;
     if(PageResp === 'cart'){
       Page = <Cart/>
     }else if (PageResp === 'signup'){
       Page = <Signup/>
     }else if (PageResp === 'login'){
-      Page = <Login setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole} setUserEmail={setUserEmail}/>
-    }else{
-      Page = <Home/>
+      Page = <Login setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole} setUserData={setUserData} userData={userData}/>
+    }else if(PageResp === 'search'){
+      Page = <SearchList name={name} setPageResp={setPageResp}/>
+    }
+    else{
+      Page = <Home user={user} setPageResp={setPageResp} />
     }
 
   return (
@@ -40,7 +44,7 @@ function GuestNavbar({setIsLoggedIn,setUserRole,setUserEmail}) {
 
         <div className='row'>
         <div  className='col-4' style={{width:370,height:800,marginLeft:0,backgroundColor:'paleturquoise',borderRadius:20,marginTop:0,padding:40}}>
-            {<Search/>}
+            {<Search setPageResp={setPageResp} setName = {setName}/>}
         </div>
         <div className='col-8' style={{width:1670,marginLeft:0,backgroundColor:'papayawhip',borderRadius:20,marginTop:0,padding:40}}>
                 <h1>Welcome to DayShop</h1><hr/>

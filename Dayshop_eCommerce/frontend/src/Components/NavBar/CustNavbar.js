@@ -5,18 +5,26 @@ import Search from '../Product/Search'
 import Home from '../Home'
 import Cart from '../Product/Cart'
 import Logout from '../Account/Logout'
+import axios from 'axios'
+import SearchList from '../Product/SearchList'
 
-function CustNavbar({setIsLoggedIn,setUserRole,setUserEmail}) {
+function CustNavbar({setIsLoggedIn,setUserRole,setUserData,userData}) {
 
     const [PageResp,setPageResp] = useState([])
-    const userName = sessionStorage.getItem('name')
+    
+    const [name,setName] = useState('')
+    const user = userData
+
+    
     let Page;
       if(PageResp === 'cart'){
-        Page = <Cart/>
+        Page = <Cart user={user}/>
       }else if (PageResp === 'logout'){
-        Page = <Logout setIsLoggedIn= {setIsLoggedIn} setUserRole={setUserRole} setUserEmail={setUserEmail} setPageResp={setPageResp}/>
+        Page = <Logout setIsLoggedIn= {setIsLoggedIn} setUserRole={setUserRole} setUserData={setUserData} setPageResp={setPageResp}/>
+      }else if(PageResp === 'search'){
+        Page = <SearchList name={name} setPageResp={setPageResp}/>
       }else{
-        Page = <Home/>
+        Page = <Home user={user} setPageResp={setPageResp}/>
       }
 
   return (
@@ -36,10 +44,10 @@ function CustNavbar({setIsLoggedIn,setUserRole,setUserEmail}) {
 
         <div className='row'>
         <div  className='col-4' style={{width:370,height:800,marginLeft:0,backgroundColor:'paleturquoise',borderRadius:20,marginTop:0,padding:40}}>
-            {<Search/>}
+            {<Search setPageResp={setPageResp} setName = {setName}/>}
         </div>
         <div className='col-8' style={{width:1670,marginLeft:0,backgroundColor:'papayawhip',borderRadius:20,marginTop:0,padding:40}}>
-                <h1>Welcome {userName}</h1><hr/>
+                <h1>Welcome {user.first_name +" "+user.last_name} !!</h1><hr/>
                 {Page}
         </div>
         </div>

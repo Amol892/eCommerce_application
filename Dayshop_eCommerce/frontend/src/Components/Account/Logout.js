@@ -1,13 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function Logout({setIsLoggedIn,setUserRole,setUserEmail,setPageResp}) {
+function Logout({setIsLoggedIn,setUserRole,setUserData,setPageResp}) {
 
   async function logoutPage(){
     sessionStorage.clear()
     setIsLoggedIn(false)
     setUserRole(sessionStorage.getItem('role'))
-    setUserEmail(sessionStorage.getItem('email'))
+    setUserData([])
     
     }
 

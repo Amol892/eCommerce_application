@@ -1,17 +1,49 @@
-import React, {useState} from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function ProductCard({items}) {
+function ProductCard({items,user,setPageResp}) {
 
+    const token = sessionStorage.getItem('token');
+    const [message, setMessage] = useState('');
+    const [error,setError]=useState([]);
     const navigate = useNavigate();
     
-    console.log(items)
+    console.log(token)
 
-    function saveData(){
+    function saveData(data){
+
+        // Create a new order object with 'user' and 'data' properties
+        const orderData = {
+                            user: user._id, 
+                            products: [
+                              {
+                                product: data._id, 
+                                name : data.Handle,
+                                quantity: 1,
+                                price: data['Variant Price'],
+                                photo: data['Image Src']
+                              },
+                            ],
+                            status: 'Processing',
+                            totalAmount: data['Variant Price'] * 1,
+                          };
         
+        console.log(orderData)
+        axios.post('http://localhost:8000/createorder/',orderData,{
+          headers:{'Content-Type':'application/json', "Authorization":token}
+         }).then(response =>{
+                setMessage(response.data)
+                setPageResp('cart')
+         }).catch(error=>{
+            console.log(error.response.data.message)
+            setError(error.response.data)
+            if(error.response.data.message === 'Unauthorized'){
+                  setPageResp('login')
+            }
+         });
     }
-    
+ 
 
   return (
     <>
@@ -19,7 +51,7 @@ function ProductCard({items}) {
         {   
             
             items.map(obj=>{
-                
+
                 return(
                     
                     <div className='col-lg-4' style={{backgroundColor:'springgreen',borderRadius:20,width:500,marginRight:30,marginTop:10,}}>
@@ -31,7 +63,7 @@ function ProductCard({items}) {
 
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <div style={{width:330,fontSize:25, backgroundColor:'lightcyan',borderRadius:10}}>Price : {obj['Variant Price']}</div>
-                            <button onClick={(e)=>{saveData(e.target.value)}} value={obj} style={{marginLeft:20,borderRadius:10,backgroundColor:'royalblue', padding:5, fontWeight:500}}>Add to cart</button>
+                            <button onClick={(e)=>{saveData(obj)}} style={{marginLeft:20,borderRadius:10,backgroundColor:'yellow', padding:5, fontWeight:500}}>Add to cart</button>
                         </div>
                         </center>
                         </div>

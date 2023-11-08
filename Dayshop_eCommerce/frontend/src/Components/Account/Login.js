@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 
-function Login({setIsLoggedIn,setUserRole,setUserEmail}) {
+function Login({setIsLoggedIn,setUserRole,setUserData}) {
 
     const {register,handleSubmit}=useForm()
     const navigate = useNavigate()
@@ -17,18 +17,16 @@ function Login({setIsLoggedIn,setUserRole,setUserEmail}) {
             //setError(response.data)
             sessionStorage.setItem('token',token)
             sessionStorage.setItem('role',response.data.data.role)   
-            sessionStorage.setItem('email',response.data.data.email)
-            sessionStorage.setItem('name',response.data.data.first_name +" "+ response.data.data.last_name)
+            //sessionStorage.setItem('email',response.data.data)
+            
             setUserRole(sessionStorage.getItem('role'))
-            setUserEmail(sessionStorage.getItem('email'))
+            setUserData(response.data.data)
             if(token){
                 setIsLoggedIn(true)
             }
             else{
                 setIsLoggedIn(false)
-            }
-            
-                
+            }      
                
             }).catch(error=>{
                 console.log(error)

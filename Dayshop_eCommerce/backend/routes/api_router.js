@@ -6,12 +6,16 @@ const bcrypt = require('bcrypt');
 const productController = require('../controllers/productController')
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-
+const orderController = require('../controllers/orderController')
+const requireAuth = require('../middlewares/jwtauth')
 // Access your secret key
 const secretKey = process.env.SECRET_KEY;
 
 //Router to register new user
 router.post('/register', userController.registerUser);
+
+
+
 
 //Router to login user
 router.post('/login', async (req,res)=>{
@@ -38,8 +42,21 @@ router.post('/login', async (req,res)=>{
     });
 });
 
-// Define a route to get all products
+// Route to get all products
 router.get('/allproducts', productController.getAllProducts);
+
+// Route to get products list based on searching
+router.get('/allsearchproducts',productController.getSearchProdcuts);
+
+// Route to create new order instance
+router.post('/createorder', requireAuth, orderController.createOrder);
+
+// Router to get orders list for cart
+router.get('/orderlist/:id', requireAuth, orderController.getOrders);
+
+// Route to delete item from Order model
+router.delete('/deleteorder/:id', requireAuth,orderController.deleteOrder);
+
 
 
 module.exports = router;
