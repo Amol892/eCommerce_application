@@ -35,3 +35,6 @@ console.log('Generated Secret Key:', secretKey);
 6) npm install axios
 7) npm start
 8) add into package.json file : "proxy":"http://localhost:8000"
+
+# Application video demo:
+![Login](https://github.com/Amol892/eCommerce_application/assets/114909137/c38b56be-e807-4be6-8750-649c9a3fd15d)
