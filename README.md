@@ -36,5 +36,19 @@ console.log('Generated Secret Key:', secretKey);
 7) npm start
 8) add into package.json file : "proxy":"http://localhost:8000"
 
-# Application video demo:
+# Application images:
+-> Login page
 ![Login](https://github.com/Amol892/eCommerce_application/assets/114909137/c38b56be-e807-4be6-8750-649c9a3fd15d)
+
+-> Signup page
+![Signup](https://github.com/Amol892/eCommerce_application/assets/114909137/b2724b30-b3ab-411e-a254-c59365012e11)
+
+-> Home page : Product list with Add to cart button
+![product_list](https://github.com/Amol892/eCommerce_application/assets/114909137/edf184a6-d794-411a-a823-bb26fbc73f4b)
+
+-> Cart page : items list with delete button
+![Cart_list_delete_item](https://github.com/Amol892/eCommerce_application/assets/114909137/ae04d07f-2614-40e7-b142-bbb9c377783c)
+
+-> Search result page : Product search by product name
+![Search_result](https://github.com/Amol892/eCommerce_application/assets/114909137/e7382d75-83e6-48f5-9acc-ebeece7cb70f)
+
